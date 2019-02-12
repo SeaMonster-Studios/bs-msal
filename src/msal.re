@@ -129,6 +129,5 @@ let initApp =
     "validateAuthority": validateAuthority,
     "cacheLocation": cacheLocationToJs(cacheLocation),
   };
-  Js.log(initAppRaw(clientId, authority, tokenReceivedCallback, options));
   initAppRaw(clientId, authority, tokenReceivedCallback, options);
 };
