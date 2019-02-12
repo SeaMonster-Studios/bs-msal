@@ -1,6 +1,6 @@
 {
   "name": "bs-msal",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Bucklescript/ReasonML bindings for https://www.npmjs.com/package/msal (Microsoft Authentication Library Preview for JavaScript)",
   "main": "index.js",
   "scripts": {
