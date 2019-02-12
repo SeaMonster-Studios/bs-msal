@@ -1,0 +1,39 @@
+{
+  "name": "bs-msal",
+  "version": "1.0.0",
+  "description": "Bucklescript/ReasonML bindings for https://www.npmjs.com/package/msal (Microsoft Authentication Library Preview for JavaScript)",
+  "main": "index.js",
+  "scripts": {
+    "clean": "bsb -clean-world",
+    "build": "bsb -make-world",
+    "watch": "bsb -make-world -w",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/loganfromlogan/bs-msal.git"
+  },
+  "keywords": [
+    "bucklescript",
+    "reasonml",
+    "msal"
+  ],
+  "author": "Logan Call",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/loganfromlogan/bs-msal/issues"
+  },
+  "homepage": "https://github.com/loganfromlogan/bs-msal#readme",
+  "peerDependencies": {
+    "msal": "^0.2.4"
+  },
+  "devDependencies": {
+    "bs-platform": "^3.0.0",
+    "jest": "22.1.2",
+    "@glennsl/bs-jest": "0.3.2"
+  },
+  "files": [
+    "src/msal.re",
+    "bsconfig.json"
+  ]
+}
