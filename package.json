@@ -1,6 +1,6 @@
 {
   "name": "bs-msal",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Bucklescript/ReasonML bindings for https://www.npmjs.com/package/msal (Microsoft Authentication Library Preview for JavaScript)",
   "main": "index.js",
   "scripts": {
@@ -11,19 +11,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/loganfromlogan/bs-msal.git"
+    "url": "git+ssh://git@github.com/SeaMonster-Studios/bs-msal.git"
   },
   "keywords": [
     "bucklescript",
     "reasonml",
     "msal"
   ],
-  "author": "Logan Call",
+  "author": "Logan Call @ SeaMonster Studios",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/loganfromlogan/bs-msal/issues"
+    "url": "https://github.com/SeaMonster-Studios/bs-msal/issues"
   },
-  "homepage": "https://github.com/loganfromlogan/bs-msal#readme",
+  "homepage": "https://github.com/SeaMonster-Studios/bs-msal#readme",
   "peerDependencies": {
     "msal": "^0.2.4"
   },
