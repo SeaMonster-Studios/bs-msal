@@ -1,4 +1,5 @@
 # bs-msal
+> DEPRECATED. Please refer to https://github.com/SeaMonster-Studios/sms-reason
 
 Bindings for [microsoft-authentication-library-for-js (msal)](https://github.com/AzureAD/microsoft-authentication-library-for-js)
 
