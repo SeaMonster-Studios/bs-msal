@@ -1,10 +1,3 @@
-type clientId = string;
-type authority = string;
-type redirectUri = string;
-type postLogoutRedirectUri = string;
-type storeAuthStateInCookie = bool;
-type validateAuthority = bool;
-
 type errorDesc = string;
 type token = string;
 type tokenType = string;
@@ -12,16 +5,19 @@ type error = string;
 type tokenReceivedCallback = (errorDesc, token, error, tokenType) => unit;
 type scopes = array(string);
 
-[@bs.deriving jsConverter]
-type cacheLocation = [ | `localStorage | `localSession];
-
-type options = {
-  .
-  "cacheLocation": string,
-  "postLogoutRedirectUri": postLogoutRedirectUri,
-  "redirectUri": redirectUri,
-  "storeAuthStateInCookie": storeAuthStateInCookie,
-  "validateAuthority": validateAuthority,
+[@bs.deriving abstract]
+type config = {
+  [@bs.optional]
+  // options: localStorage  or localSession
+  cacheLocation: string,
+  [@bs.optional]
+  postLogoutRedirectUri: string,
+  [@bs.optional]
+  redirectUri: string,
+  [@bs.optional]
+  storeAuthStateInCookie: bool,
+  [@bs.optional]
+  validateAuthority: bool,
 };
 
 type authorityInstance;
@@ -95,7 +91,7 @@ external navigateToLoginRequestUrl: app => bool = "_navigateToLoginRequestUrl";
 external postLogoutredirectUri: app => string = "_postLogoutredirectUri";
 [@bs.get] external redirectUri: app => string = "_redirectUri";
 [@bs.get] external state: app => string = "_state";
-[@bs.send] external logout: app => unit = "";
+[@bs.send] external logout: app => unit;
 [@bs.send]
 external loginPopup: (app, scopes) => Js.Promise.t(string) = "loginPopup";
 [@bs.send]
@@ -106,28 +102,16 @@ external acquireTokenPopup: (app, scopes) => Js.Promise.t(string) =
   "acquireTokenPopup";
 
 [@bs.module "msal"] [@bs.new]
-external initAppRaw:
-  (clientId, authority, tokenReceivedCallback, options) => app =
+external make_:
+  (string, string, option(tokenReceivedCallback), option(config)) => app =
   "UserAgentApplication";
 
-let initApp =
+let make =
     (
-      ~clientId,
-      ~authority,
-      ~tokenReceivedCallback,
-      ~postLogoutRedirectUri: postLogoutRedirectUri="",
-      ~redirectUri: redirectUri="",
-      ~storeAuthStateInCookie: storeAuthStateInCookie=true,
-      ~validateAuthority: validateAuthority=false,
-      ~cacheLocation: cacheLocation=`localSession,
+      ~clientId: string,
+      ~authority: string,
+      ~tokenReceivedCallback: option(tokenReceivedCallback)=?,
+      ~config: option(config)=?,
       (),
-    ) => {
-  let options: options = {
-    "redirectUri": redirectUri,
-    "postLogoutRedirectUri": postLogoutRedirectUri,
-    "storeAuthStateInCookie": storeAuthStateInCookie,
-    "validateAuthority": validateAuthority,
-    "cacheLocation": cacheLocationToJs(cacheLocation),
-  };
-  initAppRaw(clientId, authority, tokenReceivedCallback, options);
-};
+    ) =>
+  make_(clientId, authority, tokenReceivedCallback, config);
