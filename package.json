@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "bsb -clean-world",
     "build": "bsb -make-world",
-    "watch": "bsb -make-world -w",
+    "start": "bsb -make-world -w",
     "test": "jest"
   },
   "repository": {
@@ -24,16 +24,14 @@
     "url": "https://github.com/SeaMonster-Studios/bs-msal/issues"
   },
   "homepage": "https://github.com/SeaMonster-Studios/bs-msal#readme",
-  "peerDependencies": {
+  "dependencies": {
     "msal": "^0.2.4"
-  },
-  "devDependencies": {
-    "bs-platform": "^3.0.0",
-    "jest": "22.1.2",
-    "@glennsl/bs-jest": "0.3.2"
   },
   "files": [
     "src/msal.re",
     "bsconfig.json"
-  ]
+  ],
+  "devDependencies": {
+    "bs-platform": "^7.2.2"
+  }
 }
